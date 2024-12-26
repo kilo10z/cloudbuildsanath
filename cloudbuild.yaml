@@ -14,9 +14,9 @@ steps:
           --region=us-central1 \
           --service-account=779291354937-compute@developer.gserviceaccount.com
           
-substitutions:
-  _REGION: us-central1
-timeout: '1200s'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 # Permissions for Cloud Build service account
 serviceAccount: 779291354937-compute@developer.gserviceaccount.com
