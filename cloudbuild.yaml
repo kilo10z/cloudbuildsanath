@@ -1,0 +1,22 @@
+steps:
+  # Install dependencies and deploy Cloud Function
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud functions deploy listBucketsFunction \
+          --entry-point=list_buckets \
+          --runtime=python310 \
+          --trigger-http \
+          --no-allow-unauthenticated \
+          --set-env-vars=GOOGLE_PROJECT=kilo-gcp \
+          --region=us-central1 \
+          --service-account=779291354937-compute@developer.gserviceaccount.com
+          
+substitutions:
+  _REGION: us-central1
+timeout: '1200s'
+
+# Permissions for Cloud Build service account
+serviceAccount: 779291354937-compute@developer.gserviceaccount.com
